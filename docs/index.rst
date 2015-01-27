@@ -27,13 +27,13 @@ Pompei is an open source software written originally by Zulko_ and released unde
 Installation
 --------------
 
-Then install Pompei, either by unzipping the source code in a directory and typing in a terminal: ::
-
-    sudo python setup.py install
-
-Or, if you have PIP installed: ::
+If you have PIP installed: ::
 
     (sudo) pip install ez_setup pompei
+
+Or unzip the source code in a directory and type in a terminal: ::
+
+    sudo python setup.py install
 
 
 Pompei depends on MoviePy_ which will be automatically installed during the installation of Pompei.

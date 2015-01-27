@@ -1,10 +1,16 @@
 Pompei
 =================
 
-Pompei is a python package and command line utility to generate photo mosaics like this one, made of 1100+ frames of the movie Gladiator (right-click-Show to enlarge):
+Pompei (documentation and examples here_) is a python package and command line utility to generate photo mosaics from movie frames,
+like these ones:
 
 
-Pompei is an open-source software originally written by Zulko_ and released under the MIT licence. Everyone is welcome to contribute or ask for support on the Github_ project page.
+.. raw:: html
+
+         <iframe class="imgur-album" width="100%" height="600px" frameborder="0" src="http://imgur.com/a/Bycb3/embed?background=fefefa&text=111111&link=4e76c9"></iframe>
+
+
+It is an open-source software originally written by Zulko_ and released under the MIT licence. Everyone is welcome to contribute or ask for support on the Github_ project page.
 
 Installation
 --------------
@@ -40,3 +46,8 @@ Upon installation
 See for instance examples/gladiator.sh for the script that generated the image above.
 
 You can use also use Pompei as a Python package: see ``example/gladiator.py`` for the Python version of the same example.
+
+.. _Zulko: https://github.com/Zulko/
+.. _here: http://zulko.github.io/pompei
+.. _MoviePy: http://zulko.github.io/moviepy
+.. _Github: https://github.com/Zulko/pompei
