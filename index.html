@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pompei &mdash; pompei 0.1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="pompei 0.1.0 documentation" href="#"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="#" class="fa fa-home"> pompei</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <!-- Local TOC -->
+            <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Pompei</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li><a class="reference internal" href="#example-of-code">Example of code</a></li>
+<li><a class="reference internal" href="#command-line-api">Command line API</a></li>
+<li><a class="reference internal" href="#customizing-pompei">Customizing Pompei</a></li>
+<li><a class="reference internal" href="#reference-manual">Reference manual</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">pompei</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>Pompei</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="pompei">
+<h1>Pompei<a class="headerlink" href="#pompei" title="Permalink to this headline">¶</a></h1>
+<p>Pompei is a Python package to make mosaics from movie frames. In the following mosaics, a particular frame of a movie is reconstructed using other frames from the same movie. Click on the icon in the upper right corner for full resolution.</p>
+<iframe class="imgur-album" width="100%" height="600px" frameborder="0" src="http://imgur.com/a/Bycb3/embed?background=fefefa&text=111111&link=4e76c9"></iframe><p>Pompei is an open source software written originally by <a class="reference external" href="https://github.com/Zulko/">Zulko</a> and released under the MIT licence. The project is hosted in <a class="reference external" href="https://github.com/Zulko/pompei">Github</a> where you can propose commits or ask for help.</p>
+<a href="https://twitter.com/share" class="twitter-share-button"
+data-text="Create mosaics from movie frames with Python and Pompei" data-size="large" data-hashtags="PythonPompei">Tweet
+</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=Zulko&repo=pompei&type=watch&count=true&size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px" ></iframe><div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Then install Pompei, either by unzipping the source code in a directory and typing in a terminal:</p>
+<div class="highlight-python"><pre>sudo python setup.py install</pre>
+</div>
+<p>Or, if you have PIP installed:</p>
+<div class="highlight-python"><pre>(sudo) pip install ez_setup pompei</pre>
+</div>
+<p>Pompei depends on <a class="reference external" href="http://zulko.github.io/moviepy">MoviePy</a> which will be automatically installed during the installation of Pompei.</p>
+</div>
+<div class="section" id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>The mosaic algorithm proceeds as follows:</p>
+<ul class="simple">
+<li>Many frames of the movie (for instance one every 5 second) are extracted and downsized to make small thumbails. This takes a few minutes, but you will only need to do it once for each movie. The remaining steps takes less than 30 seconds in total.</li>
+<li>The image from which the mosaic will be made is divided into small rectangular regions.</li>
+<li>At first, each region is matched with the thumbnail that fits it best. To speed up computations Pompei reduces each subregion of the image, and each thumbnail extracted in step 1, to a few average pixels (for instance, 3x4 pixels), called the &#8220;signature&#8221; of the image. An image region and a thumbnail are said to &#8220;fit&#8221; well when there signatures are similar.</li>
+<li>The thumbnails associated with some regions are then changed to ensure that no thumbnail is represented too many times (first pass), and that thumbnails whitch are near in time in the original movie are well spread apart in the final picture (second pass).</li>
+<li>Finally all the thumbnails are assembled on a big canvas to form the mosaic, which is written to a file.</li>
+</ul>
+<p>Some pictures can be well <em>mosaiced</em> using the frames of a given movie, but some can&#8217;t. To help you choose the &#8220;right&#8221; image for your mosaic, Pompei provides a method (depending on the package Scikit-Learn) to find which thumbnail image extracted from the movie during the first step can be well reconstructed with the other thumbnails. This is not fully tested but seems to work quite well, here is the algorithm:</p>
+<ul class="simple">
+<li>Pool together the colors of the different images, and find the K=10 colors which represent best the general colors of the movie, using a K-means clustering algorithm.</li>
+<li>For each thumbnail, replace each of its pixels by the nearest of the K selected colors. If the color change didn&#8217;t modify much the thumbnail, it means that that the color in this frame are well represented in the movie in general, and a mosaic could be made from this image. Therefore the difference between the original thumbnail and its color-quanitzed version gives you a <em>score</em>. Frames with the lowest score are the best candidates for a mosaic.</li>
+</ul>
+</div>
+<div class="section" id="example-of-code">
+<h2>Example of code<a class="headerlink" href="#example-of-code" title="Permalink to this headline">¶</a></h2>
+<p>In this script we extract frames from a movie and detect 50 frames which could make a good mosaic, then we select one particular frame and turn in into a mosaic.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pompei</span> <span class="kn">import</span> <span class="n">MovieFrames</span>
+
+<span class="c"># The next command is only used once to extract frames from the movie.</span>
+
+<span class="n">movieframes</span> <span class="o">=</span> <span class="n">MovieFrames</span><span class="o">.</span><span class="n">from_movie</span><span class="p">(</span><span class="s">&#39;gladiator.flv&#39;</span><span class="p">,</span> <span class="c"># a video file</span>
+    <span class="n">foldername</span><span class="o">=</span><span class="s">&#39;gladiator&#39;</span><span class="p">,</span> <span class="c"># where frames are extracted</span>
+    <span class="n">fps</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="c"># take one frame every 5 seconds.</span>
+    <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="mi">60</span><span class="p">),</span> <span class="c"># cut out first and last 10 min.</span>
+    <span class="n">sig_dim</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c"># frames signatures: 3x3 pixels</span>
+
+<span class="c"># For when the movie frames are already extracted:</span>
+
+<span class="n">movieframes</span> <span class="o">=</span> <span class="n">MovieFrames</span><span class="p">(</span><span class="n">foldername</span><span class="o">=</span><span class="s">&#39;gladiator&#39;</span><span class="p">)</span>
+
+
+<span class="c"># (optional) find the thumbnails that would make great mosaics.</span>
+<span class="c"># They are extracted and saved with the corresponding time and score</span>
+<span class="c"># in the title, so that the original image can easily be retrieved</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">movieframes</span><span class="o">.</span><span class="n">find_mosaicable_frames</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]:</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">movieframes</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">movieframes</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s">&quot;gladiator_</span><span class="si">%d</span><span class="s">_</span><span class="si">%.2f</span><span class="s">.png&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">score</span><span class="p">))</span>
+
+
+
+<span class="c"># Load the image that you are going to turn into a mosaic, either</span>
+<span class="c"># from an image file or a frame from a video file</span>
+
+<span class="kn">from</span> <span class="nn">moviepy.editor</span> <span class="kn">import</span> <span class="n">VideoFileClip</span><span class="p">,</span> <span class="n">ImageClip</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">ImageClip</span><span class="p">(</span><span class="s">&quot;some_image.jpeg&quot;</span><span class="p">)</span> <span class="c"># or next line:</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">VideoFileClip</span><span class="p">(</span><span class="s">&quot;gladiator.flv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_frame</span><span class="p">(</span><span class="s">&#39;01:26:43&#39;</span><span class="p">)</span>
+
+
+<span class="c"># Make a mosaic from the frame. Many options available.</span>
+
+<span class="n">movieframes</span><span class="o">.</span><span class="n">make_mosaic</span><span class="p">(</span> <span class="n">image</span><span class="p">,</span>
+  <span class="s">&quot;gladiator_mosaic.png&quot;</span><span class="p">,</span> <span class="c"># output file (will be large and heavy !)</span>
+  <span class="n">frames_in_width</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="c"># &#39;image&#39; is reconstructed with 60x60 thumbails</span>
+  <span class="n">max_occurences</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c"># wished maximal occurence of a thumbnail.</span>
+  <span class="n">maxiter</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>     <span class="c"># abandomn optimization after 3000 steps</span>
+  <span class="n">spatial_window</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="c"># frames at a distance of 2 or less must be</span>
+  <span class="n">time_window</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>    <span class="c"># separated by 3 indices (here 15 movie seconds)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="command-line-api">
+<h2>Command line API<a class="headerlink" href="#command-line-api" title="Permalink to this headline">¶</a></h2>
+<p><strong>Not yet implemented, these are just thoughts.</strong> When Pompei is installed it also provides the following command line interface:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pompei</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">h</span> <span class="c">#to get detailed help</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pompei</span><span class="o">.</span><span class="n">py</span> <span class="n">video_to_folder</span> <span class="n">my_video</span><span class="o">.</span><span class="n">mp4</span> <span class="n">my_folder</span> <span class="o">--</span><span class="n">signatures</span><span class="o">=</span><span class="mi">3</span><span class="n">x3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pompei</span><span class="o">.</span><span class="n">py</span> <span class="n">find_best_frames</span> <span class="n">my_folder</span> <span class="o">--</span><span class="n">lum_min</span><span class="o">=</span><span class="mi">50</span> <span class="o">--</span><span class="n">nframes</span><span class="o">=</span><span class="mi">50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pompei</span><span class="o">.</span><span class="n">py</span> <span class="n">extract_image</span> <span class="n">my_video</span><span class="o">.</span><span class="n">mp4</span> <span class="s">&#39;01:02:30.10&#39;</span> <span class="n">myframe</span><span class="o">.</span><span class="n">png</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pompei</span><span class="o">.</span><span class="n">py</span> <span class="n">make_mosaic</span> <span class="n">folder</span> <span class="n">myframe</span> <span class="o">--</span><span class="n">res</span><span class="o">=</span><span class="mi">50</span> <span class="o">--</span><span class="n">max_occurences</span><span class="o">=</span><span class="mi">12</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-pompei">
+<h2>Customizing Pompei<a class="headerlink" href="#customizing-pompei" title="Permalink to this headline">¶</a></h2>
+<p>There are many parameters you can tweak in Pompei (see API below), and the code is very modular, which makes it easy to change any part of the matching algorithm. The simplest way to do this it to first go see in the module&#8217;s code which method performs the task that you wish to customize, then, in your script, overwrite this method, for instance by creating a subclass of MovieFrames:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MovieFrames2</span><span class="p">(</span><span class="n">MovieFrames</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_find_best_matches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="n">bla</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c"># write your own version of this function</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference-manual">
+<h2>Reference manual<a class="headerlink" href="#reference-manual" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pompei.MovieFrames">
+<em class="property">class </em><tt class="descclassname">pompei.</tt><tt class="descname">MovieFrames</tt><big>(</big><em>folder</em><big>)</big><a class="headerlink" href="#pompei.MovieFrames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class in Pompei. Objects represent a series of thumbnail, which are
+produced from a movie with MovieFrames.from_movie(), are analyzed with
+MovieFrame.find_mosaicable_frames(), and are used to reconstitute mosaics
+with MovieFrames.make_mosaic().</p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="pompei.MovieFrames.find_mosaicable_frames">
+<tt class="descname">find_mosaicable_frames</tt><big>(</big><em>nclusters=8</em>, <em>luminosity_threshold=50</em><big>)</big><a class="headerlink" href="#pompei.MovieFrames.find_mosaicable_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the frames whose colors resemble most the main colors of the
+movie, and thus would make good candidates for a mosaic. This is
+highly experimental.</p>
+<p>Requires Scikit-learn installed.</p>
+<p>Returns  [(frame1,score1), (frame2, score2)...] where the lowest
+scores indicates frames better suited for a mosaic.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pompei.MovieFrames.from_movie">
+<em class="property">static </em><tt class="descname">from_movie</tt><big>(</big><em>filename</em>, <em>foldername=None</em>, <em>tt=None</em>, <em>fps=None</em>, <em>crop=(0</em>, <em>0)</em>, <em>thumbnails_width=120</em>, <em>sig_dim=(2</em>, <em>2)</em><big>)</big><a class="headerlink" href="#pompei.MovieFrames.from_movie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts frames from a movie and turns them into thumbnails.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filename</strong> :</p>
+<blockquote>
+<div><p>Name of the legally obtained video file (batman.avi, superman.mp4,
+etc.)</p>
+</div></blockquote>
+<p><strong>foldername</strong> :</p>
+<blockquote>
+<div><p>The extracted frames and more infos will be stored in that directory.</p>
+</div></blockquote>
+<p><strong>tt</strong> :</p>
+<blockquote>
+<div><p>An array of times [t1, t2...] where to extract the frames. Optional if</p>
+</div></blockquote>
+<p><strong>crop</strong> :</p>
+<blockquote>
+<div><p>Number of seconds to crop at the beginning and the end of the video,
+to avoid opening and en credits.
+(seconds_cropped_at_the beginning, seconds_cropped_at_the_end)</p>
+</div></blockquote>
+<p><strong>thumbnails_width</strong> :</p>
+<blockquote>
+<div><p>Width in pixels of the thumbnails obtained by resizing the frames of
+the movie.</p>
+</div></blockquote>
+<p><strong>sig_dim</strong> :</p>
+<blockquote class="last">
+<div><p>Number of pixels to consider when reducing the frames and thumbnails
+to simple (representative )signatures.
+sid_dim=(3,2) means 3x2 (WxH) pixels.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pompei.MovieFrames.make_mosaic">
+<tt class="descname">make_mosaic</tt><big>(</big><em>image</em>, <em>outputfile</em>, <em>frames_in_width=50</em>, <em>max_occurences='auto'</em>, <em>maxiter=500</em>, <em>time_window=2</em>, <em>spatial_window=2</em>, <em>matching_quality=0.7</em><big>)</big><a class="headerlink" href="#pompei.MovieFrames.make_mosaic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a mosaic file from the best_matches found.</p>
+<p>Finds the right frames to reconstitute the given image, in three steps:</p>
+<ol class="arabic simple">
+<li>Find the optimal frame for each subregion of the given image.</li>
+<li>Change the frames so as to avoid the same frames being used too many</li>
+</ol>
+<blockquote>
+<div>times.</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Change the frames so that frames that are near in time in the original</li>
+</ol>
+<blockquote>
+<div>movie will not appear near from each other in the final mosaic.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> :</p>
+<blockquote>
+<div><p>The (RGB WxHx3 numpy array) image to reconstitute.</p>
+</div></blockquote>
+<p><strong>frames_in_width</strong> :</p>
+<blockquote>
+<div><p>How many frames are in the width of the picture (determines the
+&#8216;resolution&#8217; of the final mosaic)</p>
+</div></blockquote>
+<p><strong>max_occurences</strong> :</p>
+<blockquote>
+<div><p>How many occurences of the same frame are allowed in step 2. If auto,
+this is not taken into account and the algorithm will try and reduce
+the number of occurences until it reaches maxiter iterations or bad
+overall matching quality (see below)</p>
+</div></blockquote>
+<p><strong>maxiter</strong> :</p>
+<blockquote>
+<div><p>Number of iterations in step 2 when reducing the number of occurence
+of the most frequent frames.</p>
+</div></blockquote>
+<p><strong>matching_quality</strong> :</p>
+<blockquote>
+<div><p>The program will stop when the current total matching error is less
+than (initial_score / matching_quality). this is to avoid that the
+program degrades the quality of the mosaic too much.</p>
+</div></blockquote>
+<p><strong>time_window</strong> :</p>
+<blockquote class="last">
+<div><p>The frames will be changed in step 3 so</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Zulko.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
