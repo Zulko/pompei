@@ -4,9 +4,9 @@ Pompei
 Pompei (documentation and examples here_) is a python package and command line utility to generate photo mosaics from movie frames,
 like this one:
 
-.. img:: http://i.imgur.com/fQ8QlJ8.jpg
-    :width: 400px
-
+.. image:: http://i.imgur.com/fQ8QlJ8.jpg
+   :alt: [example]
+   :align: center
 
 It is an open-source software originally written by Zulko_ and released under the MIT licence. Everyone is welcome to contribute or ask for support on the Github_ project page.
 
