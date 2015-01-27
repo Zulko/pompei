@@ -7,6 +7,7 @@ like this one:
 .. image:: http://i.imgur.com/fQ8QlJ8.jpg
    :alt: [example]
    :align: center
+   :width: 500 px
 
 It is an open-source software originally written by Zulko_ and released under the MIT licence. Everyone is welcome to contribute or ask for support on the Github_ project page.
 
