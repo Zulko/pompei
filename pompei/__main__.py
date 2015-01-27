@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 
 """
+For the command line interface. Not finished.
+
 Pompei, photo mosaic creations with python.
 
 Usage:
