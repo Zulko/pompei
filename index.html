@@ -102,8 +102,8 @@
             
   <div class="section" id="pompei">
 <h1>Pompei<a class="headerlink" href="#pompei" title="Permalink to this headline">¶</a></h1>
-<p>Pompei is a Python package to make mosaics from movie frames. In the following mosaics, a particular frame of a movie is reconstructed using other frames from the same movie. Click on the icon in the upper right corner for full resolution.</p>
-<iframe class="imgur-album" width="100%" height="600px" frameborder="0" src="http://imgur.com/a/Bycb3/embed?background=fefefa&text=111111&link=4e76c9"></iframe><p>Pompei is an open source software written originally by <a class="reference external" href="https://github.com/Zulko/">Zulko</a> and released under the MIT licence. The project is hosted in <a class="reference external" href="https://github.com/Zulko/pompei">Github</a> where you can propose commits or ask for help.</p>
+<p>Pompei is a Python package to make mosaics from movie frames.Below are a few examples, where a particular frame of a movie is reconstructed using other frames from the same movie (click on the icon in the upper right corner for full resolution).</p>
+<iframe class="imgur-album" width="100%" height="450px" frameborder="0" src="http://imgur.com/a/Bycb3/embed?background=fefefa&text=111111&link=4e76c9"></iframe><p>Pompei is an open source software written originally by <a class="reference external" href="https://github.com/Zulko/">Zulko</a> and released under the MIT licence. The project is hosted on <a class="reference external" href="https://github.com/Zulko/pompei">Github</a> where you can propose commits or ask for help.</p>
 <a href="https://twitter.com/share" class="twitter-share-button"
 data-text="Create mosaics from movie frames with Python and Pompei" data-size="large" data-hashtags="PythonPompei">Tweet
 </a>
@@ -115,11 +115,11 @@ fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 <iframe src="http://ghbtns.com/github-btn.html?user=Zulko&repo=pompei&type=watch&count=true&size=large"
 allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px" ></iframe><div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>Then install Pompei, either by unzipping the source code in a directory and typing in a terminal:</p>
-<div class="highlight-python"><pre>sudo python setup.py install</pre>
-</div>
-<p>Or, if you have PIP installed:</p>
+<p>If you have PIP installed:</p>
 <div class="highlight-python"><pre>(sudo) pip install ez_setup pompei</pre>
+</div>
+<p>Or unzip the source code in a directory and type in a terminal:</p>
+<div class="highlight-python"><pre>sudo python setup.py install</pre>
 </div>
 <p>Pompei depends on <a class="reference external" href="http://zulko.github.io/moviepy">MoviePy</a> which will be automatically installed during the installation of Pompei.</p>
 </div>
@@ -147,7 +147,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
 <span class="c"># The next command is only used once to extract frames from the movie.</span>
 
 <span class="n">movieframes</span> <span class="o">=</span> <span class="n">MovieFrames</span><span class="o">.</span><span class="n">from_movie</span><span class="p">(</span><span class="s">&#39;gladiator.flv&#39;</span><span class="p">,</span> <span class="c"># a video file</span>
-    <span class="n">foldername</span><span class="o">=</span><span class="s">&#39;gladiator&#39;</span><span class="p">,</span> <span class="c"># where frames are extracted</span>
+    <span class="n">foldername</span><span class="o">=</span><span class="s">&#39;gladiator&#39;</span><span class="p">,</span> <span class="c"># directory where frames are extracted</span>
     <span class="n">fps</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="c"># take one frame every 5 seconds.</span>
     <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="mi">60</span><span class="p">),</span> <span class="c"># cut out first and last 10 min.</span>
     <span class="n">sig_dim</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c"># frames signatures: 3x3 pixels</span>
@@ -158,8 +158,9 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
 
 
 <span class="c"># (optional) find the thumbnails that would make great mosaics.</span>
-<span class="c"># They are extracted and saved with the corresponding time and score</span>
-<span class="c"># in the title, so that the original image can easily be retrieved</span>
+<span class="c"># These lines require the Python package Scikit-learn.</span>
+<span class="c"># The thumbnails are extracted and saved with the corresponding time and</span>
+<span class="c"># score in the title, so that the original image can easily be retrieved</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">movieframes</span><span class="o">.</span><span class="n">find_mosaicable_frames</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]:</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">movieframes</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -200,12 +201,10 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
 </div>
 <div class="section" id="customizing-pompei">
 <h2>Customizing Pompei<a class="headerlink" href="#customizing-pompei" title="Permalink to this headline">¶</a></h2>
-<p>There are many parameters you can tweak in Pompei (see API below), and the code is very modular, which makes it easy to change any part of the matching algorithm. The simplest way to do this it to first go see in the module&#8217;s code which method performs the task that you wish to customize, then, in your script, overwrite this method, for instance by creating a subclass of MovieFrames:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MovieFrames2</span><span class="p">(</span><span class="n">MovieFrames</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">_find_best_matches</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="n">bla</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="c"># write your own version of this function</span>
-</pre></div>
+<p>There are many parameters you can tweak in Pompei, and the code is very modular, which makes it easy to change any part of the algorithm. The simplest way to do this it to first go see in the module&#8217;s code which method performs the task that you wish to customize, then, in your script, overwrite this method, for instance by creating a subclass of MovieFrames:</p>
+<div class="highlight-python"><pre>class MovieFrames2(MovieFrames):
+    def _find_best_matches(self, a, b):
+        # write your own version of this function</pre>
 </div>
 </div>
 <div class="section" id="reference-manual">

@@ -1,14 +1,14 @@
 Pompei
 ========
 
-Pompei is a Python package to make mosaics from movie frames. In the following mosaics, a particular frame of a movie is reconstructed using other frames from the same movie. Click on the icon in the upper right corner for full resolution.
+Pompei is a Python package to make mosaics from movie frames.Below are a few examples, where a particular frame of a movie is reconstructed using other frames from the same movie (click on the icon in the upper right corner for full resolution).
 
 .. raw:: html
 
-         <iframe class="imgur-album" width="100%" height="600px" frameborder="0" src="http://imgur.com/a/Bycb3/embed?background=fefefa&text=111111&link=4e76c9"></iframe>
+         <iframe class="imgur-album" width="100%" height="450px" frameborder="0" src="http://imgur.com/a/Bycb3/embed?background=fefefa&text=111111&link=4e76c9"></iframe>
 
 
-Pompei is an open source software written originally by Zulko_ and released under the MIT licence. The project is hosted in Github_ where you can propose commits or ask for help.
+Pompei is an open source software written originally by Zulko_ and released under the MIT licence. The project is hosted on Github_ where you can propose commits or ask for help.
 
 
 .. raw:: html
@@ -27,13 +27,13 @@ Pompei is an open source software written originally by Zulko_ and released unde
 Installation
 --------------
 
-Then install Pompei, either by unzipping the source code in a directory and typing in a terminal: ::
-
-    sudo python setup.py install
-
-Or, if you have PIP installed: ::
+If you have PIP installed: ::
 
     (sudo) pip install ez_setup pompei
+
+Or unzip the source code in a directory and type in a terminal: ::
+
+    sudo python setup.py install
 
 
 Pompei depends on MoviePy_ which will be automatically installed during the installation of Pompei.
@@ -65,7 +65,7 @@ In this script we extract frames from a movie and detect 50 frames which could m
     # The next command is only used once to extract frames from the movie.
     
     movieframes = MovieFrames.from_movie('gladiator.flv', # a video file
-        foldername='gladiator', # where frames are extracted
+        foldername='gladiator', # directory where frames are extracted
         fps=1.0/5, # take one frame every 5 seconds.
         crop=(10*60,10*60), # cut out first and last 10 min.
         sig_dim=(3,3)) # frames signatures: 3x3 pixels
@@ -76,8 +76,9 @@ In this script we extract frames from a movie and detect 50 frames which could m
     
     
     # (optional) find the thumbnails that would make great mosaics.
-    # They are extracted and saved with the corresponding time and score
-    # in the title, so that the original image can easily be retrieved
+    # These lines require the Python package Scikit-learn.
+    # The thumbnails are extracted and saved with the corresponding time and
+    # score in the title, so that the original image can easily be retrieved
     
     for i, score in movieframes.find_mosaicable_frames()[:50]:
         time = movieframes.times[i]
@@ -117,11 +118,10 @@ Command line API
 Customizing Pompei
 -------------------
 
-There are many parameters you can tweak in Pompei (see API below), and the code is very modular, which makes it easy to change any part of the matching algorithm. The simplest way to do this it to first go see in the module's code which method performs the task that you wish to customize, then, in your script, overwrite this method, for instance by creating a subclass of MovieFrames: ::
+There are many parameters you can tweak in Pompei, and the code is very modular, which makes it easy to change any part of the algorithm. The simplest way to do this it to first go see in the module's code which method performs the task that you wish to customize, then, in your script, overwrite this method, for instance by creating a subclass of MovieFrames: ::
     
     class MovieFrames2(MovieFrames):
         def _find_best_matches(self, a, b):
-            bla = 1
             # write your own version of this function
 
 
