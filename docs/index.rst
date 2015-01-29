@@ -1,7 +1,7 @@
 Pompei
 ========
 
-Pompei is a Python package to make mosaics from movie frames.Below are a few examples, where a particular frame of a movie is reconstructed using other frames from the same movie (click on the icon in the upper right corner for full resolution).
+Pompei is a Python package to make mosaics from movie frames. Below are a few examples, where a particular frame of a movie is reconstructed using other frames from the same movie (click on the icon in the upper right corner for full resolution).
 
 .. raw:: html
 
