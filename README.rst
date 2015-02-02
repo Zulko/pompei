@@ -16,9 +16,13 @@ Installation
 
 If you have PIP installed: ::
 
-    (sudo) pip install ez_setup pompei
+    (sudo) pip install pompei
+    
+If you don't have ``setuptools`` installed the command above will fail. Install ``setuptools`` with ::
 
-Or unzip the source code in a directory and type in a terminal: ::
+    (sudo) pip install setuptools
+
+Another way of installing pompei is to unzip the source code in a directory and type in a terminal: ::
 
     sudo python setup.py install
 
